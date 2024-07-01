@@ -15,7 +15,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	// Création d'un attribut JDBC Template
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
-	private static final String FIND_BY_ID = "SELECT pseudo, mot_de_passe FROM UTILISATEURS WHERE no_utilisateur = :no_utilisateur";
+	private static final String FIND_BY_ID = "SELECT pseudo, mot_de_passe FROM UTILISATEURS WHERE pseudo = :pseudo";
 	private static final String FIND_ALL = "SELECT * FROM UTILISATEURS";
 
 	/**
@@ -29,9 +29,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	 * @param no_utilisateur extraire utilisateur by id
 	 */
 	@Override
-	public Utilisateur read(long no_utilisateur) {
+	public Utilisateur read(long pseudo) {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("no_utilisateur", no_utilisateur);
+		namedParameters.addValue("pseudo", pseudo);
 		return jdbcTemplate.queryForObject(FIND_BY_ID, namedParameters, new BeanPropertyRowMapper<>(Utilisateur.class));
 	}
 	
