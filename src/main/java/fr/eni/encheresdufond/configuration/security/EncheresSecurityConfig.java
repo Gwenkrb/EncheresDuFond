@@ -14,35 +14,32 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class EncheresSecurityConfig {
-
+	
+    JdbcUserDetailsManager  JdbcUserDetailsManager;
+	
 	@Bean
-	UserDetailsManager users (DataSource dataSource) {
-		JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-		//Modifier et tester la requête
-		users.setUsersByUsernameQuery("SELECT pseudo, mot_de_passe, 'true' as enabled FROM UTILISATEURS WHERE pseudo = ?");
-		//Modifier et tester la requête
+	UserDetailsManager users(DataSource dataSource) {
+		JdbcUserDetailsEnchereManager users = new JdbcUserDetailsEnchereManager(dataSource);
+		// Modifier et tester la requête
+		users.setUsersByUsernameQuery("SELECT pseudo, mot_de_passe, 'true' as enabled FROM UTILISATEURS WHERE pseudo = ? OR email = ?");
+		// Modifier et tester la requête
 		users.setAuthoritiesByUsernameQuery("SELECT pseudo, administrateur FROM UTILISATEURS WHERE pseudo = ?");
 		return users;
 	}
-	
+
 	@Bean
 	SecurityFilterChain web(HttpSecurity http) throws Exception {
-		
-		http.authorizeHttpRequests((authorize) -> authorize
-				.requestMatchers("/login").permitAll()
-				.requestMatchers("/connexion").authenticated()
-				.requestMatchers("/css/*").permitAll()
-			    .requestMatchers("/images/*").permitAll()
-				.requestMatchers("/").permitAll()
-				.anyRequest().denyAll()
-				);
-		
+
+		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/login").permitAll()
+				.requestMatchers("/connexion").authenticated().requestMatchers("/css/*").permitAll()
+				.requestMatchers("/images/*").permitAll().requestMatchers("/").permitAll().anyRequest().denyAll());
+
 		http.formLogin(form -> {
 			form.loginPage("/login");
 			form.permitAll();
 			form.defaultSuccessUrl("/connexion");
 		});
-		
+
 		http.logout(form -> {
 			form.invalidateHttpSession(true);
 			form.clearAuthentication(true);
@@ -50,8 +47,8 @@ public class EncheresSecurityConfig {
 			form.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 			form.logoutSuccessUrl("/").permitAll();
 		});
-		
+
 		return http.build();
 	}
-	
+
 }
