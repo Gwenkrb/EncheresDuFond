@@ -2,11 +2,31 @@ package fr.eni.encheresdufond.bo;
 
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class Retrait {
 
+	
+	 @NotBlank
+	 @Size(max = 30)
 	 private String rue;
+	
+	
+	 @NotBlank
+	 @Size(max = 15)
 	 private String codePostal;
+	 
+	 
+	 
+	 
+	 @NotBlank
+	 @Size(max = 30)
 	 private String ville;
+	 
+	 
+	 
+	 
 	 private ArticleVendu articleVendu;
 	
 	 

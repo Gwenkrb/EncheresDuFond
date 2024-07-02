@@ -3,12 +3,22 @@ package fr.eni.encheresdufond.bo;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotNull;
+
 public class Enchere {
 
-	 private LocalDate dateEnchere;
+
+	@NotNull
+	private LocalDate dateEnchere;
+	 
+	 
+	 @NotNull
 	 private int montantEnchere;
 
+	 @NotNull
 	 private Utilisateur utilisateur;
+	 
+	 @NotNull
 	 private ArticleVendu articleVendu;
 	
 	 

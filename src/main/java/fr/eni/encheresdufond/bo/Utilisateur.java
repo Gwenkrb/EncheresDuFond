@@ -2,21 +2,72 @@ package fr.eni.encheresdufond.bo;
 
 import java.util.List;
 import java.util.Objects;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.ArrayList;
 
 public class Utilisateur {
 
+	@NotNull
 	private long noUtilisateur;
+	
+	@NotBlank
+	@Size(max = 30)
 	private String pseudo;
+	
+	
+	@NotBlank
+	@Size(max = 30)
 	private String nom;
+	
+	
+	@NotBlank
+	@Size(max = 30)
 	private String prenom;
+	
+	
+	@NotBlank
+	@Size(max = 20)
 	private String email;
+	
+	
+	@NotBlank
+	@Size(max = 15)
 	private String telephone;
+	
+	
+	@NotBlank
+	@Size(max = 30)
 	private String rue;
+	
+	
+	@NotBlank
+	@Size(max = 10)
 	private String codePostale;
+	
+	
+	
+	@NotBlank
+	@Size(max = 30)
 	private String ville;
+	
+	
+	
+	@NotBlank
+	@Size(max = 30)
 	private String motDePasse;
+	
+	
+	
+	@NotNull
 	private int credit = 0;
+	
+	
+	
+	@NotNull
 	private boolean isAdminisatrateur;
 	
 	private List<ArticleVendu> listeArticlesVendus;
