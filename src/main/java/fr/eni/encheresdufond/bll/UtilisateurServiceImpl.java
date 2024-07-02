@@ -38,5 +38,12 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	public Utilisateur consulterUtilisateurParPseudo(String pseudo) {	
 		return utilisateurDAO.read(pseudo);
 	}
+	
+	@Override
+	public void creerUtilisateur(Utilisateur utilisateur) {
+		
+		utilisateurDAO.creer(utilisateur);
+		
+	}
 
 }
