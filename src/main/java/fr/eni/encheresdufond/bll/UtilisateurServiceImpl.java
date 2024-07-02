@@ -2,9 +2,14 @@ package fr.eni.encheresdufond.bll;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 import fr.eni.encheresdufond.bo.Utilisateur;
 import fr.eni.encheresdufond.dal.UtilisateurDAO;
 
+@Service
+@Profile("dev")
 public class UtilisateurServiceImpl implements UtilisateurService{
 	
 	private UtilisateurDAO utilisateurDAO;
