@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
             <h1>ENI-Enchères</h1>
            <div data-th-replace="~{fragments/errors/fragment-errors :: frag-errors}"></div>
             <h2>Mon profil</h2>
-            <form action="/inscription" method="post">
+            <form th:object="${utilisateur}" th:action="@{/inscription}" method="post">
                 <div class="form-group">
                     <label for="inputPseudo">Pseudo :</label>
                     <input id="inputPseudo" type="text" name="pseudo" th:field="*{pseudo}" required>
