@@ -30,8 +30,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	 * Cette méthode retourne un utilisateur par ID (no_utilisateur)
 	 */
 	@Override
-	public Utilisateur consulterUtilisateurParId(long no_utilisateur) {	
-		return utilisateurDAO.read(no_utilisateur);
+	public Utilisateur consulterUtilisateurParId(String pseudo) {	
+		return utilisateurDAO.read(pseudo);
 	}
 
 }

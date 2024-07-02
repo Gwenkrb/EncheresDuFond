@@ -6,7 +6,7 @@ import fr.eni.encheresdufond.bo.Utilisateur;
 
 public interface UtilisateurDAO {
 	
-	public Utilisateur read(long id);
+	public Utilisateur read(String pseudo);
 
 	List<Utilisateur> findAll();
 

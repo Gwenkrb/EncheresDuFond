@@ -9,6 +9,6 @@ public interface UtilisateurService {
 	
 	List<Utilisateur> consulterUtilisateurs();
 
-	Utilisateur consulterUtilisateurParId(long no_utilisateur);
+	Utilisateur consulterUtilisateurParId(String pseudo);
 
 }
