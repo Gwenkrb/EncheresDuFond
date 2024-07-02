@@ -31,7 +31,7 @@ public class LoginController {
 		
 		String pseudo = principal.getName();
 		
-		Utilisateur utilisateur = this.utilisateurService.consulterUtilisateurParId(pseudo);
+		Utilisateur utilisateur = this.utilisateurService.consulterUtilisateurParPseudo(pseudo);
 		
 		if (utilisateur != null) {
 			membreSession.setNoUtilisateur(utilisateur.getNoUtilisateur());
