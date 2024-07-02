@@ -10,11 +10,9 @@ import fr.eni.encheresdufond.dal.UtilisateurDAO;
 
 @Service
 @Profile("dev")
-public class UtilisateurServiceImpl implements UtilisateurService{
-	
+public class UtilisateurServiceImpl implements UtilisateurService {
+
 	private UtilisateurDAO utilisateurDAO;
-	
-	
 
 	/**
 	 * @param utilisateurDAO
@@ -22,21 +20,20 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 	public UtilisateurServiceImpl(UtilisateurDAO utilisateurDAO) {
 		this.utilisateurDAO = utilisateurDAO;
 	}
+
 	/**
 	 * 
-	 * Cette méthode retourne tout les utilisateurs 
+	 * Cette méthode retourne tout les utilisateurs
 	 */
 	@Override
 	public List<Utilisateur> consulterUtilisateurs() {
 		return utilisateurDAO.findAll();
 	}
-	/**
-	 * @param no_utilisateur
-	 * Cette méthode retourne un utilisateur par ID (no_utilisateur)
-	 */
+
 	@Override
-	public Utilisateur consulterUtilisateurParPseudo(String pseudo) {	
-		return utilisateurDAO.read(pseudo);
+	public Utilisateur searchByPseudo(String Pseudo) {
+		
+		return utilisateurDAO.readByPseudo(Pseudo);
 	}
 	
 	@Override
@@ -46,4 +43,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 		
 	}
 
+	@Override
+	public Utilisateur searchByEmail(String Email) {
+		
+		return utilisateurDAO.readByEmail(Email);
+	}
+
+	
 }

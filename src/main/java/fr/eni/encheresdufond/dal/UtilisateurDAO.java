@@ -6,7 +6,8 @@ import fr.eni.encheresdufond.bo.Utilisateur;
 
 public interface UtilisateurDAO {
 	
-	public Utilisateur read(String pseudo);
+	Utilisateur readByPseudo(String pseudo);
+	Utilisateur readByEmail(String email);
 
 	List<Utilisateur> findAll();
 	
