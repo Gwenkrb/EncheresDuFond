@@ -5,11 +5,14 @@
         <nav class="header-right">
             <ul>
             	<a href="#">S'inscrire</a>
-                <a href="/login">Se connecter</a>
+                <li><a th:href="@{/login}">Se connecter</a></li>
+                <!-- <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Se connecter</a></li> -->
+                <li sec:authorize="isAuthenticated()"><span th:text="'[Connecté]'"></span></li>
                 <li><a href="#">Enchères</a></li>
                 <li><a href="#">Vendre un article</a></li>
                 <li><a href="#">Mon profil</a></li>
-                <li><a href="#">Déconnexion</a></li>
+                <li><a th:href="@{/logout}">Déconnexion</a></li>
+                <!-- <li sec:authorize="isAuthenticated()"><a href="#">Déconnexion</a></li> -->
             </ul>
         </nav>
     </header>
