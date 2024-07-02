@@ -10,5 +10,7 @@ public interface UtilisateurService {
 	List<Utilisateur> consulterUtilisateurs();
 
 	Utilisateur consulterUtilisateurParPseudo(String pseudo);
+	
+	void creerUtilisateur(Utilisateur utilisateur);
 
 }
